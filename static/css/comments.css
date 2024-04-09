@@ -1,0 +1,135 @@
+#comments h3 {
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  color: #212529;
+  border-bottom: 1px solid #6c757d;
+}
+
+#comments ul,
+#comments ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#comment-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 6rem;
+  place-content: space-between;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+#comment-form input {
+  height: 2.25rem;
+  padding-left: 0.5rem;
+}
+
+#comment-form > textarea,
+#comment-form > input {
+  border-radius: 0.5rem;
+  outline: none;
+  border: 1px solid #ced4da;
+}
+
+#comment-form > textarea {
+  width: 100%;
+}
+
+#comment-form input[type="submit"] {
+  grid-area: 2/3/3/4;
+}
+
+#comment-form textarea {
+  grid-column: 1 / span 3;
+  padding: 0.5rem;
+  resize: none;
+}
+
+#response {
+  display: flex;
+  place-content: space-between;
+}
+
+#response a,
+#comments .comment-content > h5 a {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #6c757d;
+}
+#response a:hover,
+#comments .comment-content > h5 a:hover {
+  color: #565e64;
+}
+
+#comments .comment-list,
+#comments .comment-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#comments .comment-list {
+  margin: 0 1rem;
+  gap: 0.5rem;
+}
+
+#comments .comment-item {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  gap: 0.5rem;
+  background-color: #fff;
+  color: #212529;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+#comments .comment-item > img {
+  width: 100%;
+  border-radius: 20%;
+  box-shadow: 2px 2px 3px #e1e1e1;
+}
+
+#comments .comment-content > p {
+  background-color: #f8f9fa;
+  min-width: 100px;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  border-radius: 0.25rem;
+  place-self: start center;
+}
+
+#comments .comment-list-time {
+  color: #6c757d;
+  font-size: 0.75rem;
+}
+#comments .page-navigator {
+  display: flex;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+#comments .page-navigator li a {
+  display: block;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  color: #6c757d;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+#comments .page-navigator li.current a,
+#comments .page-navigator li a:hover {
+  background-color: #212529;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #comment-form {
+    display: flex;
+    flex-direction: column;
+  }
+}

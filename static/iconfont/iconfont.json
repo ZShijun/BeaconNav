@@ -1,0 +1,44 @@
+{
+  "id": "4245139",
+  "name": "dev_nav",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "22832802",
+      "name": "arrow-r-m",
+      "font_class": "arrow-r-m",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "22832854",
+      "name": "qr-sweep",
+      "font_class": "qr-sweep",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "11372780",
+      "name": "眼睛",
+      "font_class": "yanjing",
+      "unicode": "e8c7",
+      "unicode_decimal": 59591
+    },
+    {
+      "icon_id": "356447",
+      "name": "进入",
+      "font_class": "jinru",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "2076195",
+      "name": "赞2",
+      "font_class": "zan",
+      "unicode": "e870",
+      "unicode_decimal": 59504
+    }
+  ]
+}
