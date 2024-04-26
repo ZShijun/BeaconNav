@@ -100,6 +100,7 @@
   position: relative;
   padding-bottom: 3rem;
   min-height: 100vh;
+  padding-bottom: 100px;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
