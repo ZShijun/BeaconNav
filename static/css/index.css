@@ -1,0 +1,10 @@
+#time_box {
+  font-size: 3rem;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+}
+
+.clock span {
+  margin-top: 80px;
+  font-size: 70px;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+}
