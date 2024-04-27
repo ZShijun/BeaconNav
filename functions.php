@@ -51,8 +51,23 @@ function themeConfig($form)
         _t('搜索框'),
         _t('如果不需要显示搜索框，则全部不勾选即可')
     );
-
     $form->addInput($search);
+
+    $bgImgs = new \Typecho\Widget\Helper\Form\Element\Textarea(
+        'bgImgs',
+        null,
+        '[
+    "/usr/themes/BeaconNav/static/images/bg1.jpg",
+    "/usr/themes/BeaconNav/static/images/bg2.jpg",
+    "/usr/themes/BeaconNav/static/images/bg3.jpg",
+    "/usr/themes/BeaconNav/static/images/bg4.jpg",
+    "/usr/themes/BeaconNav/static/images/bg5.jpg"
+]',
+        _t('背景图片'),
+        _t('可访问的图片地址，也可以是网络图片的全路径，[]表示不需要背景图片')
+    );
+    $form->addInput($bgImgs);
+
     $beian = new \Typecho\Widget\Helper\Form\Element\Text(
         'beian',
         null,
@@ -61,52 +76,14 @@ function themeConfig($form)
         _t('请填入形如"粤ICP备xxx号-1"的备案号')
     );
     $form->addInput($beian);
-
-    $statJs = new \Typecho\Widget\Helper\Form\Element\Textarea(
-        'statJs',
+    $footerJs = new \Typecho\Widget\Helper\Form\Element\Textarea(
+        'footerJs',
         null,
         null,
-        _t('网站统计'),
-        _t('请填入包括script标签的统计代码')
+        _t('底部JS'),
+        _t('请填入包括script标签JS代码，主要是统计、广告等相关的代码')
     );
-    $form->addInput($statJs);
-
-    $adJs = new \Typecho\Widget\Helper\Form\Element\Textarea(
-        'adJs',
-        null,
-        null,
-        _t('广告'),
-        _t('请填入包括script标签的广告代码')
-    );
-    $form->addInput($adJs);
-}
-
-function postMeta(
-    Widget\Archive $archive,
-    string $metaType = 'archive'
-) {
-    $titleTag = $metaType == 'archive' ? 'h2' : 'h1';
-?>
-    <<?php echo $titleTag ?> class="post-title" itemprop="name headline">
-        <a itemprop="url" href="<?php $archive->permalink() ?>"><?php $archive->title() ?></a>
-    </<?php echo $titleTag ?>>
-    <?php if ($metaType != 'page') : ?>
-        <ul class="post-meta">
-            <li itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <?php _e('作者'); ?>: <a itemprop="name" href="<?php $archive->author->permalink(); ?>" rel="author"><?php $archive->author(); ?></a>
-            </li>
-            <li><?php _e('时间'); ?>:
-                <time datetime="<?php $archive->date('c'); ?>" itemprop="datePublished"><?php $archive->date(); ?></time>
-            </li>
-            <li><?php _e('分类'); ?>: <?php $archive->category(','); ?></li>
-            <?php if ($metaType == 'archive') : ?>
-                <li itemprop="interactionCount">
-                    <a itemprop="discussionUrl" href="<?php $archive->permalink() ?>#comments"><?php $archive->commentsNum('评论', '1 条评论', '%d 条评论'); ?></a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    <?php endif; ?>
-<?php
+    $form->addInput($footerJs);
 }
 
 function themeFields($layout)
@@ -129,19 +106,6 @@ function themeFields($layout)
         );
         $layout->addItem($url);
         $layout->addItem($icon);
-    }
-}
-
-function randomBgImage($themeUrl)
-{
-    $imageDir =  __DIR__ . DIRECTORY_SEPARATOR . 'static/images';
-    $allImages = scandir($imageDir);
-    $bgPattern = '/^bg\d{1,2}\./i';
-    $bgs = preg_grep($bgPattern, $allImages);
-    if (empty($bgs)) {
-        return '';
-    } else {
-        return Typecho\Common::url('./static/images/' . $bgs[array_rand($bgs)], $themeUrl);
     }
 }
 
