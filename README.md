@@ -6,4 +6,4 @@
 
 公众号：老朱独立开发
 
-![老朱独立开发](./static/images/gzh.jpg)
+![老朱独立开发](static/images/gzh.jpg)
