@@ -17,20 +17,30 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <?php $this->need('components/search.php'); ?>
 <section>
     <div class="container">
-        <?php \Widget\Metas\Category\Rows::alloc()->to($categories); ?>
         <ul class="nav nav-tabs mt-4 bg-opacity-50">
-            <li class="nav-item">
-                <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/"><?php _e('最新'); ?></a>
-            </li>
-            <?php while ($categories->next()) : ?>
-                <?php if ($categories->levels === 0) : ?>
-                    <li class="nav-item">
-                        <a class="nav-link<?php if ($this->is('category', $categories->slug)) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href=" <?php $categories->permalink(); ?>"><?php $categories->name(); ?></a>
-                    </li>
-                <?php endif; ?>
-            <?php endwhile; ?>
+            <?php if ($this->is('search') or $this->is('tag')) : ?>
+                <li class="nav-item">
+                    <span class="bg-white bg-opacity-25 d-inline-block rounded-top p-2 border border-bottom-0">
+                        <?php $this->archiveTitle([
+                            'search'   => _t('包含关键字 <strong>%s</strong> 的导航'),
+                            'tag'      => _t('标签 <strong>%s</strong> 下的导航')
+                        ], '', ''); ?>
+                    </span>
+                </li>
+            <?php else : ?>
+                <li class="nav-item">
+                    <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/"><?php _e('最新'); ?></a>
+                </li>
+                <?php \Widget\Metas\Category\Rows::alloc()->to($categories); ?>
+                <?php while ($categories->next()) : ?>
+                    <?php if ($categories->levels === 0) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link<?php if ($this->is('category', $categories->slug)) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href=" <?php $categories->permalink(); ?>"><?php $categories->name(); ?></a>
+                        </li>
+                    <?php endif; ?>
+                <?php endwhile; ?>
+            <?php endif; ?>
         </ul>
-
         <div class="row">
             <?php if ($this->have()) : ?>
                 <?php while ($this->next()) : ?>

@@ -101,6 +101,7 @@
   position: relative;
   padding-bottom: 4rem;
   min-height: 100vh;
+  background-color: #f8f9fa;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;

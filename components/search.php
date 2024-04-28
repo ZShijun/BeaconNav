@@ -13,8 +13,8 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
-                        <input id="search_kw" type="search" class="form-control border-start-0" placeholder="输入关键词...">
-                        <button class="btn btn-dark" type="button" onclick="search()">搜索</button>
+                        <input id="search_kw" type="search" class="form-control border-start-0" placeholder="<?php _e('输入搜索关键词...') ?>">
+                        <button class="btn btn-dark" type="button" onclick="search()"><?php _e('搜索') ?></button>
                     </div>
                 </div>
             </div>
