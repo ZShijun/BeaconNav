@@ -11,7 +11,6 @@
 <?php $this->header(); ?>
 
 <body>
-    <div id="loader"></div>
     <div id="content">
         <header class="navbar navbar-expand-lg sticky-top bg-black bg-opacity-50 shadow" data-bs-theme="dark">
             <div class="container">
