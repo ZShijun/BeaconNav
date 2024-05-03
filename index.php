@@ -48,7 +48,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <div class="card shadow-sm">
                             <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="set-views card-body p-2 d-flex align-items-center" data-cid="<?php $this->cid() ?>">
                                 <img src="<?= websiteIcon($this) ?>" alt="<?php $this->title() ?>">
-                                <div class="ms-3 flex-grow-1">
+                                <div class="ms-3 flex-grow-1 overflow-hidden">
                                     <h5 class="card-title mb-0 text-truncate" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php $this->title() ?>"><?php $this->title() ?></h5>
                                     <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
                                         <div class="d-flex mt-1" style="font-size: 12px;">
