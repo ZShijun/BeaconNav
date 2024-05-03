@@ -7,6 +7,11 @@
   border-radius: 2rem;
 }
 
+.iconfont.icon-zan:hover {
+  cursor: pointer;
+  color: #dc3545;
+}
+
 .page-navigator {
   list-style: none;
   margin: 0;
@@ -62,29 +67,14 @@
 }
 
 .card img {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   border-radius: 4px;
 }
 
 .card:hover {
   transform: translateY(-5px);
   cursor: pointer;
-}
-
-.card .card-link {
-  position: absolute;
-  top: 0;
-  right: 0;
-  line-height: 32px;
-  margin: 1rem 0.5rem;
-  color: #ccc;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.card .card-link:hover {
-  text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.6);
 }
 
 #loader {

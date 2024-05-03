@@ -24,7 +24,6 @@
             content.style.backgroundImage = "url(" + bgImgUrl + ")";
             content.style.display = "block";
             loader.classList.add("hidden");
-            console.log("bgImgUrl", bgImgUrl);
         });
     } else {
         content.style.display = "block";

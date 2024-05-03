@@ -29,7 +29,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </li>
             <?php else : ?>
                 <li class="nav-item">
-                    <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/"><?php _e('最新'); ?></a>
+                    <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/"><?php _e('全部'); ?></a>
                 </li>
                 <?php \Widget\Metas\Category\Rows::alloc()->to($categories); ?>
                 <?php while ($categories->next()) : ?>
@@ -46,11 +46,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <?php while ($this->next()) : ?>
                     <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 mt-3">
                         <div class="card shadow-sm">
-                            <a href="<?= $this->fields->url ?>" target="_blank" class="card-body d-flex flex-row align-items-center text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php $this->title() ?>">
+                            <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="set-views card-body p-2 d-flex align-items-center" data-cid="<?php $this->cid() ?>">
                                 <img src="<?= websiteIcon($this) ?>" alt="<?php $this->title() ?>">
-                                <h5 class="card-title mx-3 mb-0 text-truncate"><?php $this->title() ?></h5>
-                            </a>
-                            <a href="<?php $this->permalink() ?>" class="card-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php _e('详情') ?>"><i class="iconfont icon-jinru"></i></a>
+                                <div class="ms-3 flex-grow-1">
+                                    <h5 class="card-title mb-0 text-truncate" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php $this->title() ?>"><?php $this->title() ?></h5>
+                                    <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
+                                        <div class="d-flex mt-1" style="font-size: 12px;">
+                                            <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
+                                            <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing"></i><span class="ms-1"><?php $this->viewsNum(); ?></span></p>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <a href="<?php $this->permalink() ?>" onclick="event.stopPropagation();" class="card-link link-dark text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php _e('详情') ?>"><i class="iconfont icon-jinru"></i></a>
+                            </div>
                         </div>
                     </div>
                 <?php endwhile; ?>

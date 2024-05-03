@@ -11,10 +11,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="site-ico">
                     <img class="bg" src="<?= websiteIcon($this); ?>">
                     <img class="icon" src="<?= websiteIcon($this); ?>" alt="<?php $this->title(); ?>">
-                    <div class="stat">
-                        <p><i class="iconfont icon-zan"></i><span>1</span></p>
-                        <p><i class="iconfont icon-yanjing"></i><span>4.9K</span></p>
-                    </div>
+                    <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
+                        <div class="stat">
+                            <p><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
+                            <p><i class="iconfont icon-yanjing"></i><span><?php $this->viewsNum(); ?></span></p>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="site-desc">
                     <h2><?php $this->title(); ?></h2>
