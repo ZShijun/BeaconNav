@@ -52,7 +52,7 @@
 
 ### 4. 插件依赖
 
-- [LZStat](https://github.com/ZShijun/LZStat)：主题中的点赞数、访问量统计，以及自定义排序是通过 `LZStat` 插件实现的，如果不使用该插件，则无法使用点赞数、访问量统计功能，并且只能按创建时间降序排序。
+- [LZStat](https://github.com/ZShijun/LZStat)：主题中的点赞数、访问量统计，以及自定义排序是通过 `LZStat` 插件实现的，如果不需要这些功能，也可以不使用该插件。
 
 ## 发布协议
 
