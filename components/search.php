@@ -3,7 +3,7 @@
 ?>
     <section>
         <div class="container">
-            <div class="row justify-content-center mt-2">
+            <div class="row justify-content-center mt-3">
                 <div class="col col-lg-10">
                     <div class="input-group input-group shadow">
                         <select id="search_engine" class="input-group-text text-start" style="outline: none;appearance: none;">

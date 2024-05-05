@@ -102,7 +102,7 @@ function themeFields($layout)
             null,
             null,
             _t('站点图标'),
-            _t('完整网络地址、本站附件地址或不填，如果不填，则获取源站点根目录下的favicon.ico')
+            _t('完整网络地址、本站附件地址或不填，如果不填，则获取目标站点根目录下的favicon.ico')
         );
         $layout->addItem($url);
         $layout->addItem($icon);

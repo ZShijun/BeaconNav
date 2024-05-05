@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 一款简洁的导航主题，由老朱拼凑而成，你可以前往<a href="https://nav.ilaozhu.com">独立开发者导航</a>查看效果。
+ * 一款简洁的导航主题，你可以前往<a href="https://nav.ilaozhu.com">独立开发者导航</a>查看效果。
  *
  * @package BeaconNav
  * @author laozhu
@@ -29,7 +29,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </li>
             <?php else : ?>
                 <li class="nav-item">
-                    <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/"><?php _e('全部'); ?></a>
+                    <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/">
+                        <?php
+                        if (isset($this->options->plugins['activated']['LZStat']) && $this->options->plugin('LZStat')->orderBy !== 'created') {
+                            _e('热门');
+                        } else {
+                            _e('最新');
+                        } ?>
+                    </a>
                 </li>
                 <?php \Widget\Metas\Category\Rows::alloc()->to($categories); ?>
                 <?php while ($categories->next()) : ?>
