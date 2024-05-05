@@ -5,7 +5,7 @@
             <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="http://beian.miit.gov.cn" target="_blank"><?php $this->options->beian() ?></a>
         <?php endif; ?>
         Powered by <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="http://typecho.org" target="_blank">Typecho</a>.
-        Theme by <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="https://ilaozhu.com" target="_blank">BeaconNav</a>.
+        Theme by <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="https://ilaozhu.com/archives/2067/" target="_blank">BeaconNav</a>.
     </p>
 </footer><!-- end #footer -->
 </div>
