@@ -13,7 +13,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <section>
     <div class="container">
         <article class="links mt-3 bg-light shadow rounded">
-            <h5 class="text-dark p-2 mb-0 border-bottom border-secondary"><?php $this->title() ?></h5>
+            <h4 class="text-dark px-3 pt-3"><?php $this->title() ?></h4>
             <?php $this->content(); ?>
         </article>
         <?php $this->need('comments.php'); ?>
