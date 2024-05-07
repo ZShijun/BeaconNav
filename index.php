@@ -60,7 +60,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
                                         <div class="d-flex mt-1" style="font-size: 12px;">
                                             <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
-                                            <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing"></i><span class="ms-1"><?php $this->viewsNum(); ?></span></p>
+                                            <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing"></i><span class="ms-1 get-views" data-cid="<?php $this->cid(); ?>"><?php $this->viewsNum(); ?></span></p>
                                         </div>
                                     <?php endif; ?>
                                 </div>
