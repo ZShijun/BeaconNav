@@ -73,12 +73,6 @@
                 </div>
             </form>
         </div>
-    <?php endif; ?>
-    <?php if ($comments->have()) : ?>
-        <?php $comments->listComments([
-            'before'    => '<ol class="list-unstyled bg-white rounded-3 mt-3">',
-        ]); ?>
-        <?php $comments->pageNav(); ?>
         <script>
             const emojiBox = document.querySelector('#emoji-box');
             const emojiBtn = document.querySelector('#emoji-btn');
@@ -101,6 +95,12 @@
                 }
             });
         </script>
+    <?php endif; ?>
+    <?php if ($comments->have()) : ?>
+        <?php $comments->listComments([
+            'before'    => '<ol class="list-unstyled bg-white rounded-3 mt-3">',
+        ]); ?>
+        <?php $comments->pageNav(); ?>
     <?php else : ?>
         <p class="mt-3 mb-0 text-muted text-center fs-6"><?php _e('暂时没有评论'); ?></p>
     <?php endif; ?>
