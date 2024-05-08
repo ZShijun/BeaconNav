@@ -11,7 +11,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="site-ico">
                     <img class="bg" src="<?= websiteIcon($this); ?>">
                     <img class="icon" src="<?= websiteIcon($this); ?>" alt="<?php $this->title(); ?>">
-                    <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
+                    <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
                         <div class="stat">
                             <p><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
                             <p><i class="iconfont icon-yanjing"></i><span><?php $this->viewsNum(); ?></span></p>

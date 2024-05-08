@@ -9,7 +9,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <span>
                     <?php $this->title() ?>
                 </span>
-                <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
+                <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
                     <div class="d-flex text-secondary ps-3 fs-6 fw-lighter align-items-center">
                         <p class="mb-0"><i class="iconfont icon-yanjing"></i><span class="ms-2"><?php $this->viewsNum(); ?></span></p>
                         <p class="mb-0 mx-3"><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-2" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>

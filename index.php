@@ -31,7 +31,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <li class="nav-item">
                     <a class="nav-link<?php if ($this->is('index')) : ?> active" aria-current="page" <?php else : ?>" <?php endif; ?> href="/">
                         <?php
-                        if (isset($this->options->plugins['activated']['LZStat']) && $this->options->plugin('LZStat')->orderBy !== 'created') {
+                        if (\Typecho\Plugin::exists('LZStat') && $this->options->plugin('LZStat')->orderBy !== 'created') {
                             _e('热门');
                         } else {
                             _e('最新');
@@ -57,7 +57,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <img src="<?= websiteIcon($this) ?>" alt="<?php $this->title() ?>">
                                 <div class="ms-3 flex-grow-1 overflow-hidden">
                                     <h5 class="card-title mb-0 text-truncate" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php $this->title() ?>"><?php $this->title() ?></h5>
-                                    <?php if (isset($this->options->plugins['activated']['LZStat'])) : ?>
+                                    <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
                                         <div class="d-flex mt-1" style="font-size: 12px;">
                                             <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
                                             <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing"></i><span class="ms-1 get-views" data-cid="<?php $this->cid(); ?>"><?php $this->viewsNum(); ?></span></p>
