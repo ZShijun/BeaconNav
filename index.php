@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 一款简洁的导航主题，你可以前往<a href="https://nav.ilaozhu.com">独立开发者导航</a>查看效果。
+ * 一款简洁的导航主题，你可以前往 <a href="https://nav.ilaozhu.com">老朱工具箱</a> 查看效果。
  *
  * @package BeaconNav
  * @author laozhu

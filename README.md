@@ -4,9 +4,7 @@
 
 **BeaconNav**是基于`typecho`开发的一款导航主题，**Beacon**是灯塔的意思，希望使用者在知识的海洋里能够如同有**灯塔**指引一样目标明确，永远不会迷失方向。
 
-演示站点：<https://nav.ilaozhu.com>
-
-![预览图](https://cdn.jsdelivr.net/gh/ZShijun/image-repo/20240505/9d23cff565cdcf8026ed40558a9a485f.png)
+![](https://cdn.jsdelivr.net/gh/ZShijun/BeaconNav/screenshot.jpg)
 
 ## 主题特点
 
@@ -16,6 +14,18 @@
 - 支持友情链接模板页；
 - 支持点赞数、访问量统计，并支持按时间、点赞数、访问量、权重(约定为 100\*点赞数+访问量)自定义排序方式；
 - 评论支持`emoji`表情等...
+
+## 预览
+
+预览站点：<https://nav.ilaozhu.com>
+
+### 1. 列表页
+
+![](https://cdn.jsdelivr.net/gh/ZShijun/image-repo/20240512/480230687f269145be4863c3b17b31ad.png)
+
+### 2. 详情页
+
+![](https://cdn.jsdelivr.net/gh/ZShijun/image-repo/20240512/f8cdef78767a7b52d64fc98fda5738d3.png)
 
 ## 主题安装
 
