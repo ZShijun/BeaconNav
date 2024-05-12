@@ -11,10 +11,10 @@ function themeConfig($form)
         null,
         null,
         _t('站点 LOGO 地址'),
-        _t('在这里填入一个图片 URL 地址, 以在网站标题前加上一个 LOGO')
+        _t('请填写站点 LOGO 地址, 如果填写则显示图片 LOGO ，不填则显示文本标题')
     );
 
-    $form->addInput($logoUrl->addRule('url', _t('请填写一个合法的URL地址')));
+    $form->addInput($logoUrl);
 
     $calendar = new \Typecho\Widget\Helper\Form\Element\Radio(
         'calendar',

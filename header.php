@@ -14,7 +14,7 @@
     <div id="content">
         <header class="navbar navbar-expand-lg sticky-top bg-black bg-opacity-50 shadow" data-bs-theme="dark">
             <div class="container">
-                <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>">
+                <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title() ?>">
                     <?php if (!empty($this->options->logoUrl)) : ?>
                         <img height="32" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
                     <?php else : ?>

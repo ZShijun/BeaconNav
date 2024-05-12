@@ -5,7 +5,7 @@
  *
  * @package BeaconNav
  * @author laozhu
- * @version 1.0
+ * @version 1.0.1
  * @link https://ilaozhu.com
  */
 
