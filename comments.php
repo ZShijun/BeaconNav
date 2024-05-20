@@ -4,7 +4,7 @@
 ?>
     <li class="d-flex gap-2 p-2">
         <img src="<?= getGravatar($comments->mail); ?>" style="whidth:45px;height:45px;" class="rounded shadow">
-        <div id="<?php $comments->theId(); ?>" class="flex-grow-1">
+        <div id="<?php $comments->theId(); ?>" class="flex-grow-1 overflow-hidden">
             <div>
                 <h5 class="d-flex align-items-center justify-content-between">
                     <?php $comments->author(false); ?>
@@ -21,8 +21,7 @@
         </div>
     </li>
 <?php } ?>
-
-<div id="comments" class="mt-3 p-3 bg-light shadow rounded">
+<div id="comments" class="mt-3 p-3 bg-white shadow rounded">
     <?php $this->comments()->to($comments); ?>
     <h4 class="d-flex align-items-center"><?php _e('评论'); ?><span class="ms-1 text-secondary fs-6"><?php $this->commentsNum(); ?></span></h4>
     <?php if ($this->allow('comment')) : ?>
@@ -51,7 +50,7 @@
                         <span id="emoji-btn" class="btn btn-light btn-sm border p-1 rounded d-flex align-items-center" style="width: 30px; height: 30px;" aria-label="emoji">
                             <i class="iconfont icon-emoji fs-5 text-secondary"></i>
                         </span>
-                        <div id="emoji-list" class="border p-2 m-0 mt-2 rounded row gap-1 row-cols-auto overflow-auto position-absolute top-100 bg-light shadow-sm d-none" style="width: 290px;height: 150px;">
+                        <div id="emoji-list" class="border p-2 m-0 rounded row gap-1 row-cols-auto overflow-auto position-absolute bg-light shadow-sm d-none" style="width: 290px;height: 150px; top:-158px;">
                             <?php $emojis = [
                                 '😊', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '🙂', '🙃',
                                 '😉', '😇', '😏', '😌', '😍', '😘', '😗', '😙', '😚', '😋',
@@ -73,35 +72,16 @@
                 </div>
             </form>
         </div>
-        <script>
-            const emojiBox = document.querySelector('#emoji-box');
-            const emojiBtn = document.querySelector('#emoji-btn');
-            const emojiList = document.querySelector('#emoji-list');
-            const textarea = document.querySelector('#textarea');
-            window.addEventListener('click', function(e) {
-                if (emojiBtn.contains(e.target)) {
-                    emojiList.classList.toggle('d-none');
-                }
-
-                if (!emojiBox.contains(e.target)) {
-                    emojiList.classList.add('d-none');
-                }
-
-                if (emojiList.contains(e.target)) {
-                    const emoji = e.target.dataset.emoji;
-                    if (emoji) {
-                        textarea.value += emoji;
-                    }
-                }
-            });
-        </script>
     <?php endif; ?>
-    <?php if ($comments->have()) : ?>
+
+    <?php if ($comments->have()) :
+    ?>
         <?php $comments->listComments([
             'before'    => '<ol class="list-unstyled bg-white rounded-3 mt-3">',
         ]); ?>
-        <?php $comments->pageNav(); ?>
+
     <?php else : ?>
         <p class="mt-3 mb-0 text-muted text-center fs-6"><?php _e('暂时没有评论'); ?></p>
     <?php endif; ?>
+    <?php $comments->pageNav(); ?>
 </div>

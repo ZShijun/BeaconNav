@@ -68,6 +68,17 @@ function themeConfig($form)
     );
     $form->addInput($bgImgs);
 
+    $particles = new \Typecho\Widget\Helper\Form\Element\Radio(
+        'particles',
+        [
+            'Show'    => _t('显示'),
+            'Hide'    => _t('隐藏')
+        ],
+        'Show',
+        _t('显示粒子特效')
+    );
+    $form->addInput($particles);
+
     $beian = new \Typecho\Widget\Helper\Form\Element\Text(
         'beian',
         null,
