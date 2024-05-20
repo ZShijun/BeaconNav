@@ -37,6 +37,18 @@ function themeConfig($form)
         _t('时钟')
     );
     $form->addInput($clock);
+
+    $particles = new \Typecho\Widget\Helper\Form\Element\Radio(
+        'particles',
+        [
+            'Show'    => _t('显示'),
+            'Hide'    => _t('隐藏')
+        ],
+        'Show',
+        _t('粒子特效')
+    );
+    $form->addInput($particles);
+
     $searchEngines = getAllSearchEngines();
     $searchEngineTitles = [];
 
@@ -67,17 +79,6 @@ function themeConfig($form)
         _t('可访问的图片地址，也可以是网络图片的全路径，[]表示不需要背景图片')
     );
     $form->addInput($bgImgs);
-
-    $particles = new \Typecho\Widget\Helper\Form\Element\Radio(
-        'particles',
-        [
-            'Show'    => _t('显示'),
-            'Hide'    => _t('隐藏')
-        ],
-        'Show',
-        _t('显示粒子特效')
-    );
-    $form->addInput($particles);
 
     $beian = new \Typecho\Widget\Helper\Form\Element\Text(
         'beian',
