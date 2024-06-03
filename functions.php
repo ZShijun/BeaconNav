@@ -11,7 +11,7 @@ function themeConfig($form)
         null,
         null,
         _t('站点图标'),
-        _t('请填写站点图标地址, 不填则默认获取站点根路径的favicon.ico')
+        _t('请填写站点图标地址, 如果不填则默认获取站点根路径的favicon.ico')
     );
     $form->addInput($faviconUrl);
 
