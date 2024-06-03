@@ -72,6 +72,7 @@ if ($this->options->footerJs) {
             "#content>main",
             "#content>footer"
         ],
+        cacheBust: false
     });
 
     document.addEventListener("pjax:send", () => {
