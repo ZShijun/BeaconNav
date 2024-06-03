@@ -6,14 +6,22 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 function themeConfig($form)
 {
+    $faviconUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+        'faviconUrl',
+        null,
+        null,
+        _t('站点图标'),
+        _t('请填写站点图标地址, 不填则默认获取站点根路径的favicon.ico')
+    );
+    $form->addInput($faviconUrl);
+
     $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(
         'logoUrl',
         null,
         null,
-        _t('站点 LOGO 地址'),
-        _t('请填写站点 LOGO 地址, 如果填写则显示图片 LOGO ，不填则显示文本标题')
+        _t('网站LOGO'),
+        _t('请填写网站 LOGO 地址, 如果填写则显示图片 LOGO ，不填则显示文本标题')
     );
-
     $form->addInput($logoUrl);
 
     $calendar = new \Typecho\Widget\Helper\Form\Element\Radio(
@@ -88,6 +96,7 @@ function themeConfig($form)
         _t('请填入形如"粤ICP备xxx号-1"的备案号')
     );
     $form->addInput($beian);
+
     $footerJs = new \Typecho\Widget\Helper\Form\Element\Textarea(
         'footerJs',
         null,

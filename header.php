@@ -3,7 +3,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php $this->archiveTitle('', '', ' - '); ?><?php $this->options->title(); ?></title>
-
+<?php if ($this->options->faviconUrl) : ?>
+    <link rel="icon" href="<?php $this->options->faviconUrl(); ?>" />
+<?php endif; ?>
 <link rel="stylesheet" href="<?php $this->options->themeUrl('static/bootstrap/bootstrap.min.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('static/iconfont/iconfont.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('static/css/common.css'); ?>">
@@ -19,7 +21,7 @@
         <header class="navbar navbar-expand-lg sticky-top bg-black bg-opacity-50 shadow" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title() ?>">
-                    <?php if (!empty($this->options->logoUrl)) : ?>
+                    <?php if ($this->options->logoUrl) : ?>
                         <img height="32" src="<?php $this->options->logoUrl() ?>" alt="<?php $this->options->title() ?>" />
                     <?php else : ?>
                         <?php $this->options->title() ?>
