@@ -20,8 +20,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     </div>
                     <div class="site-desc">
                         <h2><?php $this->title(); ?></h2>
-                        <p><?php _e('分类'); ?>: <?php $this->category(','); ?></p>
-                        <p><?php _e('标签'); ?>: <?php $this->tags(', ', true, ''); ?></p>
+                        <p><?php _e('分类'); ?>: <?php $this->category(' '); ?></p>
+                        <p><?php _e('标签'); ?>: <?php $this->tags(' ', true, ''); ?></p>
                         <p><?php _e('时间'); ?>: <?php $this->date(); ?></p>
                         <div>
                             <a class="btn" href="<?php $this->fields->url(); ?>" title="<?php $this->title(); ?>" target="_blank"><?php _e('链接直达'); ?> <i class="iconfont icon-arrow-r-m"></i></a>
