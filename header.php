@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="<?php $this->options->themeUrl('static/bootstrap/bootstrap.min.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('static/iconfont/iconfont.css'); ?>">
 <link rel="stylesheet" href="<?php $this->options->themeUrl('static/css/common.css'); ?>">
+<script src="<?php $this->options->themeUrl('static/bootstrap/bootstrap.bundle.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('static/js/qrcode.min.js'); ?>"></script>
 <!-- 通过自有函数输出HTML头部信息 -->
 <?php $this->header(); ?>

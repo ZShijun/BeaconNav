@@ -7,6 +7,12 @@
         Powered by <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="http://typecho.org" target="_blank">Typecho</a>.
         Theme by <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="https://ilaozhu.com/archives/2067/" target="_blank">BeaconNav</a>.
     </p>
+    <script>
+        (function() {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        }())
+    </script>
 </footer><!-- end #footer -->
 </div>
 
@@ -19,7 +25,6 @@
     <?php endfor; ?>
     <span>...</span>
 </div>
-<script src="<?php $this->options->themeUrl('static/bootstrap/bootstrap.bundle.min.js'); ?>"></script>
 <script src="<?php $this->options->themeUrl('static/js/pjax.min.js'); ?>"></script>
 <?php if ($this->options->particles == 'Show') : ?>
     <script src="<?php $this->options->themeUrl('static/js/particles.min.js'); ?>"></script>
@@ -56,13 +61,6 @@ if ($this->options->footerJs) {
         content.style.display = "block";
         loader.classList.add("hidden");
     }
-
-    const tooltipTriggerList = document.querySelectorAll(
-        '[data-bs-toggle="tooltip"]'
-    );
-    const tooltipList = [...tooltipTriggerList].map(
-        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
-    );
 
     const pjax = new Pjax({
         elements: "header a,main .nav-tabs a,main .nav-list a",
