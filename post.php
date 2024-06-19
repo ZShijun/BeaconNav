@@ -43,14 +43,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </section>
     </div>
     <script>
-        new QRCode(document.querySelector('#qrcode'), {
-            text: "<?php $this->fields->url(); ?>",
-            width: 128,
-            height: 128,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        })
+        (function() {
+            new QRCode(document.querySelector('#qrcode'), {
+                text: "<?php $this->fields->url(); ?>",
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            })
+        })();
     </script>
 </main>
 <?php $this->need('footer.php'); ?>

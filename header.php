@@ -76,9 +76,7 @@
                     </div>
                     <script src="<?php $this->options->themeUrl('static/js/js-calendar-converter.js'); ?>"></script>
                     <script>
-                        showCalendar();
-
-                        function showCalendar() {
+                        (function() {
                             const lunar = calendar.solar2lunar();
                             document.querySelector('#solarDate').textContent = `${lunar.cYear}年${lunar.cMonth}月${lunar.cDay}日 ${lunar.ncWeek}`;
                             document.querySelector('#lunarDate').textContent = `${lunar.IMonthCn}${lunar.IDayCn}`;
@@ -94,7 +92,7 @@
                             if (lunar.isTerm) {
                                 document.querySelector('#term').textContent = lunar.Term;
                             }
-                        }
+                        })();
                     </script>
                 <?php endif; ?>
             </div>

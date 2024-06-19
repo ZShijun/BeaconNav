@@ -24,9 +24,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </div>
             </section>
             <script>
-                updateClock();
-
-                function updateClock() {
+                (function updateClock() {
                     const now = new Date();
                     const h = now.getHours().toString().padStart(2, "0");
                     const m = now.getMinutes().toString().padStart(2, "0");
@@ -44,7 +42,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         secondEl.innerText = s;
                     }
                     setTimeout(updateClock, 1000);
-                }
+                })();
             </script>
         <?php endif; ?>
         <?php if (!empty($this->options->searchEngines)) :
