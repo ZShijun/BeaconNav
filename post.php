@@ -44,6 +44,32 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     </div>
     <script>
         (function() {
+            if (typeof Storage !== "undefined") {
+                const cid = "<?php $this->cid(); ?>";
+                const key = "recently-used";
+                const value = {
+                    cid: cid,
+                    title: "<?php $this->title(); ?>",
+                    url: "<?php $this->fields->url(); ?>",
+                    icon: "<?= websiteIcon($this); ?>"
+                };
+                const item = localStorage.getItem(key);
+                if (item) {
+                    const items = JSON.parse(item);
+                    const index = items.findIndex(item => item.cid === cid);
+                    if (index !== -1) {
+                        items.splice(index, 1);
+                    }
+                    items.unshift(value);
+                    if (items.length > 20) {
+                        items.pop();
+                    }
+                    localStorage.setItem(key, JSON.stringify(items));
+                } else {
+                    localStorage.setItem(key, JSON.stringify([value]));
+                }
+            }
+
             new QRCode(document.querySelector('#qrcode'), {
                 text: "<?php $this->fields->url(); ?>",
                 width: 128,
@@ -55,4 +81,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         })();
     </script>
 </main>
+<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

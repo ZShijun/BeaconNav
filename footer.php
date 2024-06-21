@@ -56,10 +56,14 @@ if ($this->options->footerJs) {
             <?php if ($this->options->particles == 'Show') : ?>
                 particlesJS('particles-js', particlesConfig);
             <?php endif; ?>
+            showShortcuts("recently-used");
+            showShortcuts("favorite-used");
         });
     } else {
         content.style.display = "block";
         loader.classList.add("hidden");
+        showShortcuts("recently-used");
+        showShortcuts("favorite-used");
     }
 
     const pjax = new Pjax({
@@ -78,6 +82,8 @@ if ($this->options->footerJs) {
     });
     document.addEventListener("pjax:complete", (e) => {
         loader.classList.add("hidden");
+        showShortcuts("recently-used");
+        showShortcuts("favorite-used");
     });
 
     window.addEventListener('click', function(e) {
@@ -100,7 +106,62 @@ if ($this->options->footerJs) {
                 emojiList.classList.add('d-none');
             }
         }
+
+        setFavorite(e.target);
     });
+
+    function showShortcuts(type) {
+        const dom = document.querySelector(`.${type} .body`);
+        const emptyHtml = `<p class="text-white flex-fill mt-5 text-center"><?php _e('暂无数据...') ?></p>`;
+        const data = localStorage.getItem(type);
+        if (data && data !== '[]') {
+            const items = JSON.parse(data);
+            let innerHtml = '';
+            items.forEach(item => {
+                innerHtml += `<a href="${item.url}" target="_blank" title="${item.title}">
+                        <img src="${item.icon}" onerror="this.onerror=null; this.src='/usr/themes/BeaconNav/static/images/default-site-icon.png';">
+                        </a>`;
+            });
+            dom.innerHTML = innerHtml;
+            if (type === "favorite-used") {
+                const favorite_icons = document.querySelectorAll(".nav-list .icon-favorite");
+                favorite_icons.forEach(icon => {
+                    if (items.some(item => item.cid === icon.dataset.cid)) {
+                        icon.parentNode.classList.add("collected");
+                    }
+                });
+            }
+        } else {
+            dom.innerHTML = emptyHtml;
+        }
+    }
+
+    function setFavorite(target) {
+        if (target.classList.contains("icon-favorite")) {
+            const key = "favorite-used";
+            const value = {
+                cid: target.dataset.cid,
+                title: target.dataset.title,
+                url: target.dataset.url,
+                icon: target.dataset.icon
+            };
+            const data = localStorage.getItem(key);
+            if (data && data !== '[]') {
+                const items = JSON.parse(data);
+                const index = items.findIndex(item => item.cid === value.cid);
+                if (index !== -1) {
+                    items.splice(index, 1);
+                } else {
+                    items.push(value);
+                }
+                localStorage.setItem(key, JSON.stringify(items));
+            } else {
+                localStorage.setItem(key, JSON.stringify([value]));
+            }
+            target.parentNode.classList.toggle("collected");
+            showShortcuts("favorite-used");
+        }
+    }
 </script>
 </body>
 

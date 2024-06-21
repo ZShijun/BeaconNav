@@ -121,8 +121,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php while ($this->next()) : ?>
                         <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 mt-3">
                             <div class="card shadow-sm">
-                                <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="set-views card-body p-2 d-flex align-items-center" data-cid="<?php $this->cid() ?>">
-                                    <img src="<?= websiteIcon($this) ?>" onerror="this.onerror=null; this.src='<?php $this->options->themeUrl('static/images/default-site-icon.png'); ?>'" alt="<?php $this->title() ?>">
+                                <span class="position-absolute end-0 me-2">
+                                    <i class="iconfont icon-favorite" style="font-size: 0.9rem;" data-cid="<?php $this->cid(); ?>" data-title="<?php $this->title() ?>" data-url="<?= $this->fields->url ?>" data-icon="<?= websiteIcon($this) ?>"></i>
+                                </span>
+                                <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="card-body p-2 d-flex align-items-center">
+                                    <img src="<?= websiteIcon($this) ?>" onerror="this.onerror=null; this.src='/usr/themes/BeaconNav/static/images/default-site-icon.png'" alt="<?php $this->title() ?>">
                                     <div class="ms-3 flex-grow-1 overflow-hidden">
                                         <h5 class="card-title mb-0 text-truncate" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php $this->title() ?>"><?php $this->title() ?></h5>
                                         <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
@@ -142,4 +145,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </section>
     </div>
 </main>
+<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

@@ -74,6 +74,15 @@
   cursor: pointer;
 }
 
+.nav-list .card > span {
+  color: #495057;
+  transition: all 0.3s ease-in-out;
+}
+.nav-list .card > span.collected,
+.nav-list .card > span:hover {
+  color: #ffc107;
+}
+
 #loader {
   position: fixed;
   top: 0;
@@ -125,6 +134,89 @@
   display: none;
 }
 
+#sidebar {
+  position: fixed;
+  top: 20%;
+  width: 308px;
+  z-index: 999;
+}
+
+#sidebar > div {
+  position: absolute;
+  left: -308px;
+  width: 100%;
+  min-height: 6rem;
+  z-index: 999;
+  transition: all 0.5s ease-in-out;
+}
+
+#sidebar > div:last-of-type {
+  top: 4.5rem;
+}
+
+#sidebar > div:hover {
+  left: 0;
+  z-index: 1000;
+}
+
+#sidebar .title {
+  position: absolute;
+  height: 4rem;
+  width: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  left: 308px;
+  top: 1rem;
+  writing-mode: vertical-rl;
+  cursor: pointer;
+}
+
+#sidebar .body {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: start;
+  height: 400px;
+  padding: 10px;
+}
+
+#sidebar .body a {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  text-decoration: none;
+}
+
+#sidebar .body a img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+#sidebar .body a img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.75);
+}
+
+#sidebar .tips {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  cursor: pointer;
+  color: #6c757d;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+#sidebar .tips:hover {
+  color: #fff;
+  text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+}
 .hidden {
   opacity: 0;
   visibility: hidden;
