@@ -80,8 +80,7 @@ function themeConfig($form)
     "/usr/themes/BeaconNav/static/images/bg1.jpg",
     "/usr/themes/BeaconNav/static/images/bg2.jpg",
     "/usr/themes/BeaconNav/static/images/bg3.jpg",
-    "/usr/themes/BeaconNav/static/images/bg4.jpg",
-    "/usr/themes/BeaconNav/static/images/bg5.jpg"
+    "/usr/themes/BeaconNav/static/images/bg4.jpg"
 ]',
         _t('背景图片'),
         _t('可访问的图片地址，也可以是网络图片的全路径，[]表示不需要背景图片')
