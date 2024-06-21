@@ -135,7 +135,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <a href="<?php $this->permalink() ?>" onclick="event.stopPropagation();" class="card-link link-dark text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php _e('详情') ?>"><i class="iconfont icon-jinru"></i></a>
+                                    <a href="<?php $this->permalink() ?>" onclick="event.stopPropagation();" class="card-link link-dark text-decoration-none" title="<?php _e('详情') ?>"><i class="iconfont icon-jinru"></i></a>
                                 </div>
                             </div>
                         </div>
