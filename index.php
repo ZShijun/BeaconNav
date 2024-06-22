@@ -127,7 +127,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="card-body p-2 d-flex align-items-center">
                                     <img src="<?= websiteIcon($this) ?>" onerror="this.onerror=null; this.src='/usr/themes/BeaconNav/static/images/default-site-icon.png'" alt="<?php $this->title() ?>">
                                     <div class="ms-3 flex-grow-1 overflow-hidden d-flex flex-column align-items-start">
-                                        <h5 class="card-title mb-0 mw-100 text-truncate align-self-start" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?php $this->title() ?>"><?php $this->title() ?></h5>
+                                        <h5 class="card-title mb-0 mw-100 text-truncate align-self-start" title="<?php $this->title() ?>"><?php $this->title() ?></h5>
                                         <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
                                             <div class="d-flex mt-1" style="font-size: 12px;">
                                                 <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
