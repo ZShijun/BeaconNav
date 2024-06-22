@@ -5,7 +5,7 @@
  *
  * @package BeaconNav
  * @author laozhu
- * @version 1.1.0
+ * @version 1.3.0
  * @link https://ilaozhu.com
  */
 
@@ -131,7 +131,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                         <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
                                             <div class="d-flex mt-1" style="font-size: 12px;">
                                                 <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" title="<?php _e('赞一个') ?>" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
-                                                <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing" title="<?php _e('浏览') ?>"></i><span class="ms-1 get-views" data-cid="<?php $this->cid(); ?>"><?php $this->viewsNum(); ?></span></p>
+                                                <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing" title="<?php _e('浏览') ?>"></i><span class="ms-1"><?php $this->viewsNum(); ?></span></p>
                                             </div>
                                         <?php endif; ?>
                                     </div>
