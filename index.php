@@ -122,16 +122,16 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <div class="col-sm-6 col-md-4 col-lg-3 col-xxl-2 mt-3">
                             <div class="card shadow-sm">
                                 <span class="position-absolute end-0 me-2">
-                                    <i class="iconfont icon-favorite" style="font-size: 0.9rem;" data-cid="<?php $this->cid(); ?>" data-title="<?php $this->title() ?>" data-url="<?= $this->fields->url ?>" data-icon="<?= websiteIcon($this) ?>"></i>
+                                    <i class="iconfont icon-favorite" style="font-size: 0.9rem;" title="<?php _e('本地收藏') ?>" data-cid="<?php $this->cid(); ?>" data-title="<?php $this->title() ?>" data-url="<?= $this->fields->url ?>" data-icon="<?= websiteIcon($this) ?>"></i>
                                 </span>
                                 <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="card-body p-2 d-flex align-items-center">
-                                    <img src="<?= websiteIcon($this) ?>" onerror="this.onerror=null; this.src='/usr/themes/BeaconNav/static/images/default-site-icon.png'" alt="<?php $this->title() ?>">
+                                    <img src="<?= websiteIcon($this) ?>" title="<?php $this->title() ?>" onerror="this.onerror=null; this.src='/usr/themes/BeaconNav/static/images/default-site-icon.png'" alt="<?php $this->title() ?>">
                                     <div class="ms-3 flex-grow-1 overflow-hidden d-flex flex-column align-items-start">
                                         <h5 class="card-title mb-0 mw-100 text-truncate align-self-start" title="<?php $this->title() ?>"><?php $this->title() ?></h5>
                                         <?php if (\Typecho\Plugin::exists('LZStat')) : ?>
                                             <div class="d-flex mt-1" style="font-size: 12px;">
-                                                <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
-                                                <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing"></i><span class="ms-1 get-views" data-cid="<?php $this->cid(); ?>"><?php $this->viewsNum(); ?></span></p>
+                                                <p class="mb-0 me-2 d-flex align-items-center"><i class="set-likes iconfont icon-zan" title="<?php _e('赞一个') ?>" data-cid="<?php $this->cid(); ?>"></i><span class="get-likes ms-1" data-cid="<?php $this->cid(); ?>"><?php $this->likesNum(); ?></span></p>
+                                                <p class="mb-0 d-flex align-items-center"><i class="iconfont icon-yanjing" title="<?php _e('浏览') ?>"></i><span class="ms-1 get-views" data-cid="<?php $this->cid(); ?>"><?php $this->viewsNum(); ?></span></p>
                                             </div>
                                         <?php endif; ?>
                                     </div>
