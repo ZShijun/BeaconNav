@@ -37,6 +37,30 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="article-content" itemprop="articleBody">
                     <?php $this->content(); ?>
                 </div>
+                <div class="post-copyright my-3 p-3 text-bg-light small border rounded-1">
+                    <p class="mb-1">
+                        <strong><?php _e("本文作者："); ?></strong>
+                        <a class="fw-bold" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title() ?>" target="_blank"><?php $this->author(); ?></a>
+                    </p>
+                    <p class="mb-1">
+                        <strong><?php _e("原文链接："); ?></strong>
+                        <a href="<?php $this->permalink() ?>" title="<?php $this->title() ?>" target="_blank"><?php $this->title() ?></a>
+                    </p>
+                    <p class="mb-1">
+                        <strong><?php _e("版权声明："); ?></strong>
+                        <span>
+                            <?php _e("本站所有文章除特别声明外，均采用"); ?>
+                            <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a>
+                            <?php _e("许可协议。转载请注明出处！"); ?>
+                        </span>
+                    </p>
+                    <p class="mb-0">
+                        <strong><?php _e("免责声明："); ?></strong>
+                        <span>
+                            <?php _e("文中如涉及第三方资源，均来自互联网，仅供学习研究，禁止商业使用，如有侵权，联系我们24小时内删除！"); ?>
+                        </span>
+                    </p>
+                </div>
             </article>
 
             <?php $this->need('comments.php'); ?>
