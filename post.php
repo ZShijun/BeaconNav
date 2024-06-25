@@ -37,7 +37,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="article-content" itemprop="articleBody">
                     <?php $this->content(); ?>
                 </div>
-                <div class="post-copyright my-3 p-3 text-bg-light small border rounded-1">
+                <div class="post-copyright mt-3 p-3 text-bg-light small border rounded-1">
                     <p class="mb-1">
                         <strong><?php _e("本文作者："); ?></strong>
                         <a class="fw-bold" href="<?php $this->options->siteUrl(); ?>" title="<?php $this->options->title() ?>" target="_blank"><?php $this->author(); ?></a>
