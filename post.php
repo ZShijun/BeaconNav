@@ -37,6 +37,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="article-content" itemprop="articleBody">
                     <?php $this->content(); ?>
                 </div>
+                <?php $googleAd = getGoogleAd(); ?>
+                <?php if ($googleAd['showAd'] && !empty($googleAd['slot'])) : ?>
+                    <ins class="adsbygoogle" style="display:block;text-align:center;overflow:hidden;" data-ad-client="ca-<?= $googleAd['publisher']; ?>" data-ad-slot="<?= $googleAd['slot']; ?>" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                <?php endif; ?>
                 <div class="post-copyright mt-3 p-3 text-bg-light small border rounded-1">
                     <p class="mb-1">
                         <strong><?php _e("本文作者："); ?></strong>

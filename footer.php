@@ -24,6 +24,11 @@
     <script src="<?php $this->options->themeUrl('static/js/particles.min.js'); ?>"></script>
     <script src="<?php $this->options->themeUrl('static/js/particles.config.js'); ?>"></script>
 <?php endif; ?>
+<?php
+$googleAd = getGoogleAd();
+if ($googleAd['showAd']) : ?>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-<?= $googleAd['publisher']; ?>" crossorigin="anonymous"></script>
+<?php endif; ?>
 <?php $this->footer(); ?>
 <?php
 if ($this->options->footerJs) {
@@ -61,7 +66,7 @@ if ($this->options->footerJs) {
     }
 
     const pjax = new Pjax({
-        elements: "header a,main .nav-tabs a,main .nav-list a",
+        elements: "header a,main .nav-tabs a<?php if (!$googleAd['showAd']) : ?>,main .nav-list a<?php endif; ?>",
         selectors: ["title",
             "meta[charset]",
             "#content>header",

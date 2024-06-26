@@ -1,12 +1,16 @@
 <?php
 
 use Typecho\Common;
+use Typecho\Widget\Helper\Form\Element\Checkbox;
+use Typecho\Widget\Helper\Form\Element\Radio;
+use Typecho\Widget\Helper\Form\Element\Text;
+use Typecho\Widget\Helper\Form\Element\Textarea;
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 function themeConfig($form)
 {
-    $faviconUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+    $faviconUrl = new Text(
         'faviconUrl',
         null,
         null,
@@ -15,7 +19,7 @@ function themeConfig($form)
     );
     $form->addInput($faviconUrl);
 
-    $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text(
+    $logoUrl = new Text(
         'logoUrl',
         null,
         null,
@@ -24,7 +28,7 @@ function themeConfig($form)
     );
     $form->addInput($logoUrl);
 
-    $calendar = new \Typecho\Widget\Helper\Form\Element\Radio(
+    $calendar = new Radio(
         'calendar',
         [
             'Show'    => _t('显示'),
@@ -35,7 +39,7 @@ function themeConfig($form)
     );
     $form->addInput($calendar);
 
-    $clock = new \Typecho\Widget\Helper\Form\Element\Radio(
+    $clock = new Radio(
         'clock',
         [
             'Show'    => _t('显示'),
@@ -46,7 +50,7 @@ function themeConfig($form)
     );
     $form->addInput($clock);
 
-    $particles = new \Typecho\Widget\Helper\Form\Element\Radio(
+    $particles = new Radio(
         'particles',
         [
             'Show'    => _t('显示'),
@@ -64,7 +68,7 @@ function themeConfig($form)
         $searchEngineTitles[$key] = $value['title'];
     }
 
-    $search = new \Typecho\Widget\Helper\Form\Element\Checkbox(
+    $search = new Checkbox(
         'searchEngines',
         $searchEngineTitles,
         ['self'],
@@ -73,7 +77,7 @@ function themeConfig($form)
     );
     $form->addInput($search);
 
-    $bgImgs = new \Typecho\Widget\Helper\Form\Element\Textarea(
+    $bgImgs = new Textarea(
         'bgImgs',
         null,
         '[
@@ -87,7 +91,7 @@ function themeConfig($form)
     );
     $form->addInput($bgImgs);
 
-    $beian = new \Typecho\Widget\Helper\Form\Element\Text(
+    $beian = new Text(
         'beian',
         null,
         null,
@@ -96,7 +100,16 @@ function themeConfig($form)
     );
     $form->addInput($beian);
 
-    $footerJs = new \Typecho\Widget\Helper\Form\Element\Textarea(
+    $googleAd = new Textarea(
+        'googleAd',
+        null,
+        null,
+        _t('谷歌广告'),
+        _t('主题预设了Google AdSense广告位，不填则不显示广告，格式：{"publisher":"pub-xxx", "slot":"xxx"}，注意：由于SPA与Google Ads的兼容性存在问题，所以当使用Google Ads时，会禁用打开文章详情页的PJAX功能，需要牺牲一定的性能，请自行权衡')
+    );
+    $form->addInput($googleAd);
+
+    $footerJs = new Textarea(
         'footerJs',
         null,
         null,
@@ -106,10 +119,39 @@ function themeConfig($form)
     $form->addInput($footerJs);
 }
 
+function getGoogleAd()
+{
+    static $settings = [];
+    if (!empty($settings)) {
+        return $settings;
+    }
+
+    $options = Typecho\Widget::widget(Widget\Options::class);
+    if (empty($options->googleAd)) {
+        $settings = [
+            'showAd' => false
+        ];
+        return $settings;
+    }
+
+    $googleAd = json_decode($options->googleAd, true);
+    if (!empty($googleAd) && !empty($googleAd['publisher']) && strpos($googleAd['publisher'], 'pub-') === 0) {
+        $settings = [
+            'showAd' => true,
+            'publisher' => $googleAd['publisher'],
+            'slot' => $googleAd['slot']
+        ];
+    } else {
+        $settings = [
+            'showAd' => false
+        ];
+    }
+    return $settings;
+}
 function themeFields($layout)
 {
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
-        $url = new \Typecho\Widget\Helper\Form\Element\Text(
+        $url = new Text(
             'url',
             null,
             null,
@@ -117,7 +159,7 @@ function themeFields($layout)
             _t('跳转链接URL，必填')
         );
 
-        $icon = new \Typecho\Widget\Helper\Form\Element\Text(
+        $icon = new Text(
             'icon',
             null,
             null,
