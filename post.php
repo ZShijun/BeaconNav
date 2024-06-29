@@ -36,7 +36,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </div>
                 <?php $googleAd = getGoogleAd(); ?>
                 <?php if ($googleAd['showAd'] && !empty($googleAd['slot'])) : ?>
-                    <ins class="adsbygoogle" style="display:block;text-align:center;" data-ad-client="ca-<?= $googleAd['publisher']; ?>" data-ad-slot="<?= $googleAd['slot']; ?>" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <ins class="adsbygoogle" style="display:block;text-align:center;overflow:hidden;" data-ad-client="ca-<?= $googleAd['publisher']; ?>" data-ad-slot="<?= $googleAd['slot']; ?>" data-ad-format="auto" data-full-width-responsive="true"></ins>
                     <script>
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
