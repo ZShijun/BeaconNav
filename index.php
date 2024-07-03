@@ -124,7 +124,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <span class="position-absolute end-0 me-2">
                                     <i class="iconfont icon-favorite" style="font-size: 0.9rem;" title="<?php _e('本地收藏') ?>" data-cid="<?php $this->cid(); ?>" data-title="<?php $this->title() ?>" data-url="<?= $this->fields->url ?>" data-icon="<?= websiteIcon($this) ?>"></i>
                                 </span>
-                                <div data-href="<?= $this->fields->url ?>" onclick="window.open(this.dataset.href, '_blank');" class="card-body p-2 d-flex align-items-center">
+                                <div onclick="window.open('<?php $this->permalink() ?>', '_self');" class="card-body p-2 d-flex align-items-center">
                                     <img src="<?= websiteIcon($this) ?>" title="<?php $this->title() ?>" onerror="this.onerror=null; this.src='/usr/themes/BeaconNav/static/images/default-site-icon.png'" alt="<?php $this->title() ?>">
                                     <div class="ms-3 flex-grow-1 overflow-hidden d-flex flex-column align-items-start">
                                         <h5 class="card-title mb-0 mw-100 text-truncate align-self-start" title="<?php $this->title() ?>"><?php $this->title() ?></h5>
@@ -135,7 +135,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <a href="<?php $this->permalink() ?>" onclick="event.stopPropagation();" class="card-link link-dark text-decoration-none" title="<?php _e('详情') ?>"><i class="iconfont icon-jinru"></i></a>
+                                    <a href="<?= $this->fields->url ?>" onclick="event.stopPropagation();" target="_blank" class=" card-link link-dark text-decoration-none" title="<?php _e('直达') ?>"><i class="iconfont icon-jinru"></i></a>
                                 </div>
                             </div>
                         </div>
