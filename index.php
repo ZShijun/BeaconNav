@@ -5,7 +5,7 @@
  *
  * @package BeaconNav
  * @author laozhu
- * @version 1.4.1
+ * @version 1.4.2
  * @link https://ilaozhu.com
  */
 
@@ -140,6 +140,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             </div>
                         </div>
                     <?php endwhile; ?>
+                <?php else : ?>
+                    <div class="col mt-3">
+                        <h2 class="post-title fs-4 text-center"><?php _e('没有找到内容'); ?></h2>
+                    </div>
                 <?php endif; ?>
             </div>
         </section>
