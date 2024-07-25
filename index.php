@@ -51,7 +51,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <section>
                 <div class="row justify-content-center mt-3">
                     <div class="col col-lg-10">
-                        <div class="input-group input-group shadow">
+                        <div class="input-group input-group shadow rounded-pill overflow-hidden">
                             <select id="search_engine" class="input-group-text text-start" style="outline: none;appearance: none;">
                                 <?php foreach ($this->options->searchEngines as $engine) : ?>
                                     <option value="<?= $engine; ?>" <?php if ($engine === 'self') echo 'selected'; ?>>
@@ -59,7 +59,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <input id="search_kw" type="search" class="form-control border-start-0" placeholder="<?php _e('输入搜索关键词...') ?>">
+                            <input id="search_kw" type="search" class="form-control form-control-lg border-start-0" placeholder="<?php _e('输入搜索关键词...') ?>">
                             <button class="btn btn-dark" type="button" onclick="search()"><?php _e('搜索') ?></button>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             </script>
         <?php endif; ?>
         <section>
-            <ul class="position-relative nav nav-tabs mt-4 bg-opacity-50">
+            <ul class="position-relative nav nav-tabs mt-5 bg-opacity-50">
                 <?php if ($this->is('search') or $this->is('tag')) : ?>
                     <li class="nav-item">
                         <span class="bg-white bg-opacity-25 d-inline-block rounded-top p-2 border border-bottom-0">

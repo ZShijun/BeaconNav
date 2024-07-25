@@ -9,6 +9,7 @@
     </p>
 </footer><!-- end #footer -->
 </div>
+</div>
 
 <div id="loader">
     <?php
@@ -69,9 +70,9 @@ if ($this->options->footerJs) {
         elements: "header a,main .nav-tabs a<?php if (!$googleAd['showAd']) : ?>,main .nav-list a<?php endif; ?>",
         selectors: ["title",
             "meta[charset]",
-            "#content>header",
-            "#content>main",
-            "#content>footer"
+            "#content>div>header",
+            "#content>div>main",
+            "#content>div>footer"
         ],
         cacheBust: false
     });

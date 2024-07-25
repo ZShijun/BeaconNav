@@ -1,9 +1,9 @@
 <?php if (!defined('__TYPECHO_ROOT_DIR__')) exit; ?>
 
 <?php $this->need('header.php'); ?>
-<section>
+<section class="position-relative">
     <div class="container">
-        <div class="text-center mt-3 py-5 bg-light shadow rounded">
+        <div class="text-center mt-3 py-5 bg-white shadow rounded">
             <h2 class="text-danger" style="font-size: 8rem; letter-spacing: 1rem">404</h2>
             <p class="lead"><?php _e('抱歉，没有找到你要的内容...'); ?></p>
             <div>
@@ -13,4 +13,5 @@
         </div>
     </div>
 </section>
+<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>
