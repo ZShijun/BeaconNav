@@ -5,11 +5,15 @@
  *
  * @package BeaconNav
  * @author laozhu
- * @version 1.4.2
+ * @version 1.5.0
  * @link https://ilaozhu.com
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (isset($_GET['target'])) {
+    $this->need('redirect.php');
+    exit;
+}
 ?>
 <?php $this->need('header.php'); ?>
 <main>
@@ -52,7 +56,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="row justify-content-center mt-3">
                     <div class="col col-lg-10">
                         <div class="input-group input-group shadow rounded-pill overflow-hidden">
-                            <select id="search_engine" class="input-group-text text-start" style="outline: none;appearance: none;">
+                            <select id="search_engine" class="input-group-text">
                                 <?php foreach ($this->options->searchEngines as $engine) : ?>
                                     <option value="<?= $engine; ?>" <?php if ($engine === 'self') echo 'selected'; ?>>
                                         <?php echo $allEngines[$engine]['title']; ?>
@@ -60,7 +64,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                 <?php endforeach; ?>
                             </select>
                             <input id="search_kw" type="search" class="form-control form-control-lg border-start-0" placeholder="<?php _e('输入搜索关键词...') ?>">
-                            <button class="btn btn-dark" type="button" onclick="search()"><?php _e('搜索') ?></button>
+                            <button class="btn btn-light px-3" type="button" onclick="search()"><i class="iconfont icon-search fs-4"></i></button>
                         </div>
                     </div>
                 </div>
@@ -135,7 +139,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <a href="<?= $this->fields->url ?>" onclick="event.stopPropagation();" target="_blank" class=" card-link link-dark text-decoration-none" title="<?php _e('直达') ?>"><i class="iconfont icon-jinru"></i></a>
+                                    <?php $redirect = getRedirectUrl($this->fields->url) ?>
+                                    <a href="<?= $redirect["url"] ?>" onclick="event.stopPropagation();" target="_blank" class=" card-link link-dark text-decoration-none" title="<?php _e('直达') ?>"><i class="iconfont icon-jinru"></i></a>
                                 </div>
                             </div>
                         </div>

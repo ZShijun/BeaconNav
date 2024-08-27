@@ -83,6 +83,17 @@
   color: #ffc107;
 }
 
+.nav-list .card .icon-favorite,
+.nav-list .card .icon-jinru {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-list .card:hover .icon-favorite,
+.nav-list .card:hover .icon-jinru {
+  opacity: 1;
+}
+
 #loader {
   position: fixed;
   top: 0;
@@ -233,6 +244,18 @@
   height: 200px;
   opacity: 1;
 }
+
+#search_engine {
+  outline: none;
+  appearance: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+#search_engine option:checked {
+  font-weight: bold;
+}
+
 .links ul {
   list-style: none;
   padding: 1rem;

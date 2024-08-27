@@ -24,7 +24,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <p><?php _e('标签'); ?>: <?php $this->tags(' ', true, ''); ?></p>
                         <p><?php _e('时间'); ?>: <?php $this->date(); ?></p>
                         <div>
-                            <a class="btn" href="<?php $this->fields->url(); ?>" title="<?php $this->title(); ?>" target="_blank"><?php _e('链接直达'); ?> <i class="iconfont icon-arrow-r-m"></i></a>
+                            <a class="btn" href="<?php $this->fields->url(); ?>" title="<?php $this->title(); ?>" target="_blank" rel="noopener noreferrer"><?php _e('链接直达'); ?> <i class="iconfont icon-arrow-r-m"></i></a>
                             <span class="btn">
                                 <?php _e('手机查看'); ?>
                                 <i class="iconfont icon-qr-sweep"></i>
@@ -34,13 +34,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         </div>
                     </div>
                 </div>
-                <?php $googleAd = getGoogleAd(); ?>
-                <?php if ($googleAd['showAd'] && !empty($googleAd['slot'])) : ?>
-                    <ins class="adsbygoogle" style="display:block;text-align:center;overflow:hidden;" data-ad-client="ca-<?= $googleAd['publisher']; ?>" data-ad-slot="<?= $googleAd['slot']; ?>" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                <?php endif; ?>
                 <div class="article-content" itemprop="articleBody">
                     <?php $this->content(); ?>
                 </div>
@@ -54,22 +47,20 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <a href="<?php $this->permalink() ?>" title="<?php $this->title() ?>" target="_blank"><?php $this->title() ?></a>
                     </p>
                     <p class="mb-1">
-                        <strong><?php _e("版权声明："); ?></strong>
-                        <span>
-                            <?php _e("本站所有文章除特别声明外，均采用"); ?>
-                            <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a>
-                            <?php _e("许可协议。转载请注明出处！"); ?>
-                        </span>
-                    </p>
-                    <p class="mb-0">
                         <strong><?php _e("免责声明："); ?></strong>
                         <span>
                             <?php _e("文中如涉及第三方资源，均来自互联网，仅供学习研究，禁止商业使用，如有侵权，联系我们24小时内删除！"); ?>
                         </span>
                     </p>
+                    <p class="mb-0">
+                        <strong><?php _e("安全声明："); ?></strong>
+                        <span>
+                            <?php _e("鉴于网络服务的特殊性，本站难以保证所收录网址的正确性或可靠性，请仔细识别你所访问的网站，注意您的个人隐私和财产安全。"); ?>
+                        </span>
+                    </p>
                 </div>
             </article>
-
+            <?php showGoogleAd('slot', 'mt-3'); ?>
             <?php $this->need('comments.php'); ?>
         </section>
     </div>

@@ -61,6 +61,18 @@ function themeConfig($form)
     );
     $form->addInput($particles);
 
+    $redirect = new Radio(
+        'redirect',
+        [
+            0    => _t('禁用'),
+            1    => _t('启用')
+        ],
+        0,
+        _t('过渡页面'),
+        _t('启用外链跳转过渡页面，主要用于安全声明，过渡页面设置了一个广告位，弥补了一下广告位太少的问题')
+    );
+    $form->addInput($redirect);
+
     $searchEngines = getAllSearchEngines();
     $searchEngineTitles = [];
 
@@ -105,7 +117,7 @@ function themeConfig($form)
         null,
         null,
         _t('谷歌广告'),
-        _t('主题预设了Google AdSense广告位，不填则不显示广告，格式：{"publisher":"pub-xxx", "slot":"xxx"}，注意：由于SPA与Google Ads的兼容性存在问题，所以当使用Google Ads时，会禁用打开文章详情页的PJAX功能，需要牺牲一定的性能，请自行权衡')
+        _t('主题预设了Google AdSense广告位，不填则不显示广告，格式：{"publisher":"pub-xxx", "slot":"xxx", "redirect":"xxx"}，注意：由于SPA与Google Ads的兼容性存在问题，所以当使用Google Ads时，会禁用打开文章详情页的PJAX功能，需要牺牲一定的性能，请自行权衡')
     );
     $form->addInput($googleAd);
 
@@ -117,6 +129,29 @@ function themeConfig($form)
         _t('请填入包括script标签JS代码，主要是统计、广告等相关的代码')
     );
     $form->addInput($footerJs);
+}
+
+/**
+ * 显示广告
+ * 
+ * @param string $position 广告位置
+ * slot: 文章页广告位
+ * redirect:过渡页广告位
+ * @param string $classes 广告容器类名
+ */
+function showGoogleAd($position, $classes = '')
+{
+    $googleAd = getGoogleAd();
+    if ($googleAd['showAd'] && !empty($googleAd[$position])) {
+        echo  <<<EOF
+        <section class="rounded overflow-hidden {$classes}">
+            <ins class="adsbygoogle" style="display:block;text-align:center;" data-ad-client="ca-{$googleAd['publisher']}" data-ad-slot="{$googleAd[$position]}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </section>
+        EOF;
+    }
 }
 
 function getGoogleAd()
@@ -139,7 +174,8 @@ function getGoogleAd()
         $settings = [
             'showAd' => true,
             'publisher' => $googleAd['publisher'],
-            'slot' => $googleAd['slot']
+            'slot' => isset($googleAd['slot']) ? $googleAd['slot'] : '',
+            'redirect' => isset($googleAd['redirect']) ? $googleAd['redirect'] : ''
         ];
     } else {
         $settings = [
@@ -148,6 +184,7 @@ function getGoogleAd()
     }
     return $settings;
 }
+
 function themeFields($layout)
 {
     if (preg_match("/write-post.php/", $_SERVER['REQUEST_URI'])) {
@@ -241,13 +278,101 @@ function getGravatar($email, $s = 96, $d = 'mp', $r = 'g', $img = false, $atts =
 function getEmojis()
 {
     return [
-        '😊', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '🙂', '🙃',
-        '😉', '😇', '😏', '😌', '😍', '😘', '😗', '😙', '😚', '😋',
-        '😛', '😜', '😝', '😒', '😔', '😖', '😞', '😟', '😠', '😡',
-        '😳', '😨', '😰', '😥', '😢', '😭', '😱', '😲', '😵', '😷',
-        '🤒', '🤕', '🤢', '😴', '🤤', '😪', '😫', '😬', '😮', '🤲',
-        '🤜', '🤛', '🤚', '🤝', '🙏', '🤞', '🤟', '🤘', '🤙', '👌',
-        '👍', '👎', '✊', '👊', '🤛', '🤜', '👏', '🙌', '👐', '🤲',
-        '🤝', '🙏', '💪'
+        '😊',
+        '😃',
+        '😄',
+        '😁',
+        '😆',
+        '😅',
+        '😂',
+        '🤣',
+        '🙂',
+        '🙃',
+        '😉',
+        '😇',
+        '😏',
+        '😌',
+        '😍',
+        '😘',
+        '😗',
+        '😙',
+        '😚',
+        '😋',
+        '😛',
+        '😜',
+        '😝',
+        '😒',
+        '😔',
+        '😖',
+        '😞',
+        '😟',
+        '😠',
+        '😡',
+        '😳',
+        '😨',
+        '😰',
+        '😥',
+        '😢',
+        '😭',
+        '😱',
+        '😲',
+        '😵',
+        '😷',
+        '🤒',
+        '🤕',
+        '🤢',
+        '😴',
+        '🤤',
+        '😪',
+        '😫',
+        '😬',
+        '😮',
+        '🤲',
+        '🤜',
+        '🤛',
+        '🤚',
+        '🤝',
+        '🙏',
+        '🤞',
+        '🤟',
+        '🤘',
+        '🤙',
+        '👌',
+        '👍',
+        '👎',
+        '✊',
+        '👊',
+        '🤛',
+        '🤜',
+        '👏',
+        '🙌',
+        '👐',
+        '🤲',
+        '🤝',
+        '🙏',
+        '💪'
     ];
+}
+
+function getRedirectUrl($url)
+{
+    if (!$url) {
+        return [
+            'hasUrl' => false,
+            'url' => ''
+        ];
+    }
+
+    $options = Typecho\Widget::widget(Widget\Options::class);
+    if (str_starts_with($url, $options->siteUrl) || $options->redirect != '1') {
+        return [
+            'hasUrl' => true,
+            'url' => $url
+        ];
+    } else {
+        return [
+            'hasUrl' => true,
+            'url' => $options->siteUrl . '?target=' . urlencode($url)
+        ];
+    }
 }
