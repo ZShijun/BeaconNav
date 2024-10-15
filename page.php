@@ -23,7 +23,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php $this->content(); ?>
                 </div>
             </article>
-            <?php $this->need('comments.php'); ?>
+            <?php if ($this->allow('comment')) {
+                $this->need('comments.php');
+            } ?>
         </section>
     </div>
 </main>

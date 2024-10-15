@@ -28,6 +28,15 @@ function themeConfig($form)
     );
     $form->addInput($logoUrl);
 
+    $notice = new Text(
+        'notice',
+        null,
+        null,
+        _t('公告设置'),
+        _t('显示在首页的公告文本，为空则不显示公告')
+    );
+    $form->addInput($notice);
+
     $calendar = new Radio(
         'calendar',
         [

@@ -5,7 +5,7 @@
  *
  * @package BeaconNav
  * @author laozhu
- * @version 1.5.0
+ * @version 1.5.1
  * @link https://ilaozhu.com
  */
 
@@ -17,7 +17,13 @@ if (isset($_GET['target'])) {
 ?>
 <?php $this->need('header.php'); ?>
 <main>
-    <div class="container">
+    <div class="container pt-3">
+        <?php if ($this->options->notice) : ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <i class="iconfont icon-notice"></i><span class="ms-2"><?php $this->options->notice() ?></span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
         <?php if ($this->options->clock == 'Show') : ?>
             <section>
                 <div class="clock d-flex justify-content-center text-white">
