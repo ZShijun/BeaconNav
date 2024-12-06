@@ -3,7 +3,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 
 <?php $this->need('header.php'); ?>
-<main>
+<main class="flex-grow-1">
     <div class="container">
         <section class="position-relative">
             <article class="mt-3 p-3 bg-white shadow rounded" itemscope itemtype="http://schema.org/BlogPosting">
@@ -105,5 +105,4 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         })();
     </script>
 </main>
-<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

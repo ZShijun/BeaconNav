@@ -5,7 +5,7 @@
  *
  * @package BeaconNav
  * @author laozhu
- * @version 1.5.1
+ * @version 1.5.2
  * @link https://ilaozhu.com
  */
 
@@ -16,7 +16,7 @@ if (isset($_GET['target'])) {
 }
 ?>
 <?php $this->need('header.php'); ?>
-<main>
+<main class="flex-grow-1">
     <div class="container pt-3">
         <?php if ($this->options->notice) : ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -160,5 +160,4 @@ if (isset($_GET['target'])) {
         </section>
     </div>
 </main>
-<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

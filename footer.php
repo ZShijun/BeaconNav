@@ -1,4 +1,4 @@
-<footer id="footer" class="position-absolute bottom-0 w-100 text-secondary text-center small">
+<footer id="footer" class="position-relative bottom-0 mt-3 text-secondary text-center small">
     <p>
         &copy; <?php echo date('Y'); ?> All rights reserved.
         <?php if ($this->options->beian) : ?>
@@ -9,8 +9,7 @@
     </p>
 </footer><!-- end #footer -->
 </div>
-</div>
-
+<?php $this->need('sidebar.php'); ?>
 <div id="loader">
     <?php
     $text = _t('数据加载中');
@@ -37,7 +36,7 @@ if ($this->options->footerJs) {
 }
 ?>
 <script>
-    const content = document.querySelector("#content");
+    const body = document.querySelector("body");
     const loader = document.querySelector("#loader");
     const loaderSpans = loader.children;
     for (let i = 0; i < loaderSpans.length; i++) {
@@ -50,8 +49,7 @@ if ($this->options->footerJs) {
         const img = new Image();
         img.src = bgImgUrl;
         img.addEventListener('load', () => {
-            content.style.backgroundImage = "url(" + bgImgUrl + ")";
-            content.style.display = "block";
+            body.style.backgroundImage = "url(" + bgImgUrl + ")";
             loader.classList.add("hidden");
             <?php if ($this->options->particles == 'Show') : ?>
                 particlesJS('particles-js', particlesConfig);
@@ -60,7 +58,6 @@ if ($this->options->footerJs) {
             showShortcuts("favorite-used");
         });
     } else {
-        content.style.display = "block";
         loader.classList.add("hidden");
         showShortcuts("recently-used");
         showShortcuts("favorite-used");
@@ -70,9 +67,9 @@ if ($this->options->footerJs) {
         elements: "header a,main .nav-tabs a<?php if (!$googleAd['showAd']) : ?>,main .nav-list a<?php endif; ?>",
         selectors: ["title",
             "meta[charset]",
-            "#content>div>header",
-            "#content>div>main",
-            "#content>div>footer"
+            "div>header",
+            "div>main",
+            "div>footer"
         ],
         cacheBust: false
     });

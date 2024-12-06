@@ -9,7 +9,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 <?php $this->need('header.php'); ?>
-<main>
+<main class="flex-grow-1">
     <div class="container">
         <section class="position-relative">
             <article class="links p-3 mt-3 bg-white shadow rounded">
@@ -22,5 +22,4 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </section>
     </div>
 </main>
-<?php $this->need('sidebar.php'); ?>
 <?php $this->need('footer.php'); ?>

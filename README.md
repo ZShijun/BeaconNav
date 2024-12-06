@@ -33,7 +33,8 @@
 
 ## 预览
 
-预览站点：<https://nav.ilaozhu.com>
+预览站点 1：<https://nav.ilaozhu.com>
+预览站点 2：<https://tz.ilaozhu.com>
 
 ### 1. 列表页
 
