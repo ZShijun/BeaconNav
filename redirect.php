@@ -24,7 +24,12 @@
             </div>
         </div>
     </div>
+    <?php showGoogleAd('redirect', 'mt-5'); ?>
+    <?php
+    $googleAd = getGoogleAd();
+    if ($googleAd['showAd']) : ?>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-<?= $googleAd['publisher']; ?>" crossorigin="anonymous"></script>
+    <?php endif; ?>
 </body>
-<?php showGoogleAd('redirect', 'mt-5'); ?>
 
 </html>
