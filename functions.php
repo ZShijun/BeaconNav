@@ -171,7 +171,7 @@ function getGoogleAd()
     }
 
     $options = Typecho\Widget::widget(Widget\Options::class);
-    if (empty($options->googleAd)) {
+    if (empty($options->googleAd) || isWeChatBrowser()) {
         $settings = [
             'showAd' => false
         ];
@@ -192,6 +192,12 @@ function getGoogleAd()
         ];
     }
     return $settings;
+}
+
+function isWeChatBrowser()
+{
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    return strpos($userAgent, 'MicroMessenger') !== false;
 }
 
 function themeFields($layout)
