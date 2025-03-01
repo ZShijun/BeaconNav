@@ -140,6 +140,43 @@ function themeConfig($form)
     $form->addInput($footerJs);
 }
 
+function themeInit($comment)
+{
+    if ($comment->is('single')) {
+        $comment = spam_protection_pre($comment);
+    }
+}
+
+function spam_protection_math()
+{
+    $user = Typecho\Widget::widget(Widget\User::class);
+    if (!$user->hasLogin()) {
+        $num1 = rand(0, 9);
+        $num2 = rand(0, 9);
+        echo "<input type=\"text\" name=\"sum\" class=\"form-control\" value=\"\" size=\"8\" placeholder=\"$num1 + $num2 = ?\">\n";
+        echo "<input type=\"hidden\" name=\"num1\" value=\"$num1\">\n";
+        echo "<input type=\"hidden\" name=\"num2\" value=\"$num2\">";
+    }
+}
+
+function spam_protection_pre($commentdata)
+{
+    $user = Typecho\Widget::widget(Widget\User::class);
+    if (isset($_REQUEST['text']) && $_REQUEST['text'] != null && !$user->hasLogin()) {
+        $sum = $_POST['sum'];
+        switch ($sum) {
+            case null:
+                $commentdata->response->throwContent(_t('未输入验证码，请<a href="javascript:history.back()">返回上一页</a>重新输入。'));
+                break;
+            case $_POST['num1'] + $_POST['num2']:
+                break;
+            default:
+                $commentdata->response->throwContent(_t('验证码错误，请<a href="javascript:history.back()">返回上一页</a>重新输入。'));
+        }
+    }
+    return $commentdata;
+}
+
 /**
  * 显示广告
  * 
